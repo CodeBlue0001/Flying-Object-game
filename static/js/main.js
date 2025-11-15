@@ -242,15 +242,25 @@ function get_player_data(){
     let player_name=document.getElementById("name").value;
     console.log("player name:",player_name);
 
-    fetch(`/get_player_data?name=${player_name}`)
-    .then(response => response.json())
-    .then(data => {
-        console.log("Player data received:", data);
-        // You can use the received data as needed
+    // data={name:player_name};
+
+    const post_location="/get_player_data";
+    fetch(post_location,{
+        method:"POST",
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify({name:player_name})
     })
-    .catch(error => {
-        console.error("Error fetching player data:", error);
+    .then(response=>response.json())
+    .then(data=>{
+        console.log("player data fetched:",data);
+    })
+    .catch(error=>{
+        console.error("Error fetching player data:",error);
     });
+
+    
 }
 
 document.getElementById("form-submit").addEventListener("click",function(event){

@@ -8,14 +8,14 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/get_player_data', methods=['GET'])
+@app.route('/get_player_data', methods=['POST'])
 def fetch_player_data():
-    name=request.args.get('name')
-    # saveing player data to a file as JSON
+    
+    name = request.form.get('name')
     save_path="data/player_db.json"
     try:
         with open(save_path, 'r') as file:
-            data = file.read()
+            data = file.write(name)
         return data
     except FileNotFoundError:
         return {"error": "Player data not found"}, 404
