@@ -1,4 +1,5 @@
 from flask import Flask,render_template,request
+import json
  
 app=Flask(__name__)
 
@@ -11,14 +12,20 @@ def index():
 @app.route('/get_player_data', methods=['POST'])
 def fetch_player_data():
     
-    name = request.form.get('name')
+    name = request.json.get('name')
     save_path="data/player_db.json"
+    # save_path="data/player_db.txt"
+    print("Name got from client",name)
     try:
-        with open(save_path, 'r') as file:
-            data = file.write(name)
-        return data
-    except FileNotFoundError:
-        return {"error": "Player data not found"}, 404
+        with open(save_path, 'w') as file:
+            file.write(name)
+            file.close()
+            data = {"message": f"Player data for {name} saved successfully."}
+            return data
+        # return data
+    except Exception as e:
+        print("Error saving player data:", e)
+        return {"error": "Player data not saved"}, 404
 
 
 if __name__ == "__main__":

@@ -11,7 +11,7 @@
         Flying Object
     </div>
     <!-- player name section -->
-     <div class="player_input_section">
+     <div class="player_input_section" id="player_input_section">
         <form action="">
             <input type="text" name="name" id="name" placeholder="Enter Name">
             <br>        
@@ -19,6 +19,10 @@
         </form>
         
      </div>
+
+     <!-- score box -->
+        <div class="score_box" id="score_box">
+            Score: <span id="score_value">0</span>
 
      <br>
 
@@ -42,7 +46,7 @@
 </div> 
     </div>
     <div class="butttons_container">
-        <button id="start" onclick="looping()">START</button>
+        <!-- <button id="start" onclick="looping()">START</button> -->
 
     <button id="up" onclick="move_bird_up()">UP</button>
     <button id="down" onclick="move_bird_down()">DOWN</button>

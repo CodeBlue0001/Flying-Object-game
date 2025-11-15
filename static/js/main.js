@@ -263,10 +263,23 @@ function get_player_data(){
     
 }
 
+function hide_player_input_section(){
+    let player_input_section=document.getElementById("player_input_section");
+    player_input_section.style.display="none";
+}
+
+function Scoring_system(){
+    // scoring logic here
+    let score=document.getElementById("score_value");
+    let counter=parseInt(score.innerText.split(": ")[1])||0;
+    counter+=1;
+    score.innerText="Score: "+counter;
+}
+
 document.getElementById("form-submit").addEventListener("click",function(event){
     event.preventDefault(); // prevent form submission
     get_player_data();
-    getElementById("player_input_section").style.display="none";
+    
     looping();
 });
 
