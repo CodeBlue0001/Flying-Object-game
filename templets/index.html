@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flying bird</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="header">
+        Flying Object
+    </div>
+    <!-- player name section -->
+     <div class="player_input">
+        <form action="">
+            <input type="text" placeholder="Enter Name">
+            <br>        
+            <button type="submit" id="form-submit">Lets Go!!</button>
+        </form>
+        
+     </div>
+
+     <br>
+
+    <!--game canvas   -->
+    <div class="canvas" >
+
+        <div class="upper_objects" id="upper_objects">
+            <!-- obstracles -->
+             <!-- <div class="upper_obs" id="u0"></div> -->
+        </div>
+        
+        
+
+        <div class="lower_objects" id="lower_objects">
+            <!-- <div class="lower_obs" id="l0"></div> -->
+        </div>
+        <div class="bird" id="bird">        
+        </div>
+        <!-- <div class="bird-container bird-container-one" id="bird">
+   <div class="bird bird-one"></div> -->
+</div> 
+    </div>
+    <div class="butttons_container">
+        <button id="start" onclick="looping()">START</button>
+
+    <button id="up" onclick="move_bird_up()">UP</button>
+    <button id="down" onclick="move_bird_down()">DOWN</button>
+</div>
+    
+
+<footer>
+    <h2>created by Dipayan </h2>
+</footer>
+    
+</body>
+
+
+
+<!-- <script>
+
+let lower_ob_array=[]
+let index=1;
+var object_index=1;
+
+
+function create_lower_obs(){
+    var max=300, min=150;
+    let lower_div=document.createElement("div");
+    lower_div.setAttribute("class","lower_obs");
+    let lower_ob_height=Math.random()*(max-min)+min;
+    lower_div.style.height=lower_ob_height+"px";
+    // lower_div.style.bottom= '600px';
+    lower_div.style.top=(600-lower_ob_height)+"px";
+    lower_div.id='l'+index;
+    index++;
+    lower_ob_array.push(index);
+    let lower_position=document.getElementById("lower_objects");
+    lower_position.appendChild(lower_div);
+        // console.log(up_ob_array,lower_ob_array)
+}
+function create_upper_obs(){
+        let up_ob_array=[]
+        // console.log("create object function call")
+        var max=300;
+        var min=150;
+        let upper_div=document.createElement("div");
+        upper_div.setAttribute("class","upper_obs");
+       
+
+        // setting randome size
+        let upper_ob_height=Math.random()*(max-min)+min;
+        upper_div.style.height=upper_ob_height+"px";
+        upper_div.id='u'+object_index;
+        object_index++;
+        up_ob_array.push(object_index);
+        
+
+        let upper_position=document.getElementById("upper_objects");
+ 
+        upper_position.appendChild(upper_div);
+        
+}
+
+
+ function move_upper_objects(upper_obs,i){
+        var upos=parseInt(upper_obs.style.left)||750;
+
+        var interval=100
+        var counter=0
+            setInterval(() => {
+                if(upos){
+                    var val=upos-10;
+                    
+                    upper_obs.style.left=val+"px";
+                
+                    upos=upos-10;
+                    counter+=10
+                    if(val==0){
+                        upper_obs.remove();
+                    }
+                    if(counter==60){
+                        // add_obs();
+                        counter=0
+                    }
+                    
+                } else{
+                    console.log("end upper object");
+                    clearInterval(flag);
+                    
+                }
+            }, interval);
+            
+
+    }
+
+function move_lower_objects(lower_obs){
+        var lpos=parseInt(lower_obs.style.left)||750;
+        var interval=100;
+        var counter=0
+        setInterval(() => {
+            if(lpos){
+                var val = lpos-10;
+                lower_obs.style.left=val+"px";
+                lpos-=10;
+                if(val==0){
+                        lower_obs.remove();
+                    }
+                if(counter==60){
+                        // add_obs();
+                        counter=0
+                    }
+
+            }else{
+                console.log("end lower object");
+                clearInterval(flag);
+            }
+            
+        }, interval);
+}
+
+
+function looping(){
+ const gap = 1000; // delay between each obstacle start (ms)
+//  let i=1,j=1;
+    let controler=20;
+
+    for (let i = 1,j=1; i < controler; i++,j++) {
+        setTimeout(() => {
+            
+            create_upper_obs();
+            let upper_obs = document.getElementById("u" + i);
+            
+            move_upper_objects(upper_obs);
+            
+        }, i * gap);
+
+        setTimeout(()=>{
+            create_lower_obs();
+            let lower_obs=document.getElementById("l"+j);
+            move_lower_objects(lower_obs);
+
+        },i*gap)
+    };
+    // window.alert("game is finished");
+    // window.location.reload();
+};
+
+
+// running the game through the loop
+
+
+function move_bird_up() {
+    var bird = document.getElementById("bird");
+    var pos = parseInt(bird.style.top)||200 ;
+    console.log(pos)
+    bird.style.top = (pos - 10) + "px";
+}
+
+function move_bird_down(){
+    var bird = document.getElementById("bird");
+    var pos = parseInt(bird.style.top) ||200;
+    console.log(pos)
+    bird.style.top = (pos + 10) + "px";
+       
+}
+
+  
+window.onload = function() {
+document.body.style.overflow = "hidden"; 
+document.addEventListener('keydown',function(event){
+            if(event.key==='ArrowUp'){
+                console.log("up key press")
+                move_bird_up();
+            }
+            else if(event.key==='ArrowDown'){
+                move_bird_down();
+            }
+        });
+};
+
+
+
+
+</script> -->
+
+<script src="../static/js/main.js"></script>
+</html>
