@@ -238,6 +238,27 @@ document.addEventListener('keydown',function(event){
         });
 };
 
+function get_player_data(){
+    let player_name=document.getElementById("name").value;
+    console.log("player name:",player_name);
+
+    fetch(`/get_player_data?name=${player_name}`)
+    .then(response => response.json())
+    .then(data => {
+        console.log("Player data received:", data);
+        // You can use the received data as needed
+    })
+    .catch(error => {
+        console.error("Error fetching player data:", error);
+    });
+}
+
+document.getElementById("form-submit").addEventListener("click",function(event){
+    event.preventDefault(); // prevent form submission
+    get_player_data();
+    getElementById("player_input_section").style.display="none";
+    looping();
+});
 
 
 
