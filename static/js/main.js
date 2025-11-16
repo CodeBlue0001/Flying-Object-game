@@ -33,6 +33,7 @@ function Game_logic(object_left_axis_value,object_height,object_class,object_id)
 
             if (bird_position_top > object_height){
                 // console.log("status Ok");
+                Scoring_system();
             }
             else if (bird_position_top < object_height){
                 // console.log("collision");
@@ -59,7 +60,8 @@ function Game_logic(object_left_axis_value,object_height,object_class,object_id)
         );
 
         if (!isVerticallyColliding) {
-            console.log("status Ok");
+            // console.log("status Ok");
+            Scoring_system();
         } else {
             console.log("collision");
             handleLoss("Lower object hit!");
